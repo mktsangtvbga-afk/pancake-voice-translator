@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pancake Voice Translator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="pvt-popup">
+    <header class="pvt-popup-header">
+      <h1>Pancake Voice Translator</h1>
+      <p class="pvt-popup-subtitle">Dịch voice message bằng Gemini AI</p>
+    </header>
+
+    <section class="pvt-field">
+      <label for="backendUrl">Backend URL</label>
+      <input id="backendUrl" type="text" placeholder="http://localhost:5175" />
+      <p class="pvt-hint">Địa chỉ server Node.js đang chạy <code>server.js</code>. Không lưu API key nào ở đây.</p>
+    </section>
+
+    <div class="pvt-status" id="status" role="status"></div>
+
+    <div class="pvt-actions-row">
+      <button id="saveBtn" type="button" class="pvt-btn pvt-btn-primary">Lưu</button>
+      <button id="testBtn" type="button" class="pvt-btn">Kiểm tra kết nối</button>
+    </div>
+
+    <hr />
+
+    <section class="pvt-field">
+      <label>Bộ nhớ đệm (cache) bản dịch</label>
+      <button id="clearCacheBtn" type="button" class="pvt-btn pvt-btn-danger">Xoá cache trên trình duyệt</button>
+      <p class="pvt-hint">Không xoá cache phía server (dùng chung cho mọi người dùng).</p>
+    </section>
+
+    <footer class="pvt-popup-footer">
+      Hoạt động trên: pancake.vn, pages.fm (Pancake)
+    </footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

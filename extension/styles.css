@@ -1,0 +1,119 @@
+/* Styles for popup.html only. Content injected into Pancake's page uses an
+   isolated Shadow DOM with its own inline <style> (see content.js) so this
+   file never touches the host page. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 320px;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2328;
+  background: #ffffff;
+}
+
+.pvt-popup {
+  padding: 16px;
+}
+
+.pvt-popup-header h1 {
+  font-size: 15px;
+  margin: 0 0 2px;
+}
+
+.pvt-popup-subtitle {
+  margin: 0 0 14px;
+  font-size: 12px;
+  color: #57606a;
+}
+
+.pvt-field {
+  margin-bottom: 12px;
+}
+
+.pvt-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pvt-field input[type="text"] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.pvt-hint {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: #6e7781;
+}
+
+.pvt-hint code {
+  background: #f6f8fa;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.pvt-status {
+  min-height: 16px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.pvt-status-success { color: #1a7f37; }
+.pvt-status-error { color: #cf222e; }
+.pvt-status-info { color: #57606a; }
+
+.pvt-actions-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.pvt-btn {
+  cursor: pointer;
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  color: #1f2328;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.pvt-btn:hover {
+  background: #eef1f4;
+}
+
+.pvt-btn-primary {
+  background: #0969da;
+  border-color: #0969da;
+  color: #ffffff;
+}
+
+.pvt-btn-primary:hover {
+  background: #0757ba;
+}
+
+.pvt-btn-danger {
+  color: #cf222e;
+  border-color: #cf222e;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #d8dee4;
+  margin: 14px 0;
+}
+
+.pvt-popup-footer {
+  margin-top: 12px;
+  font-size: 11px;
+  color: #8c959f;
+  text-align: center;
+}

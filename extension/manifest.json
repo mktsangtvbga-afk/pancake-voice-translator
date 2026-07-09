@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Pancake Voice Translator",
+  "version": "1.0.0",
+  "description": "Dịch voice message trên Pancake sang tiếng Việt bằng Gemini AI, và nghe lại bằng giọng đọc tiếng Việt.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmX/DkcVvl9RkyKQcsEp0zqgISx/EauYf/Lh95i0mo8oN6/qmk9u/pHDso0cm8ygVLQl+UfycOCDhRWPEMVZlRl/ruulcrDpML4fCrjeiIBdhZSf4EKPS36i1MyFx5KhlvoqR466qk6NjYsnuyiokJc1b0ztTUQ1RsrWk0+Pfqyed5NoQoKGbrCWblges81Oapo0Lpmkg3M9DOe7Z2XgJ2yOik0UOOWAEpnPZuHjetY2BkrLcFv/ZT047XmKQfb8AAEzQmV2uciG7IzZFLNNlNiAYvGAtfgQtMkfnvHNN5bCe/NnCNmAJ0/i6JD0KYXMrFAEN+MBTq38xNSpq/yCm4wIDAQAB",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "scripting"],
+  "host_permissions": [
+    "https://pancake.vn/*",
+    "https://*.pancake.vn/*",
+    "https://pages.fm/*",
+    "https://*.pages.fm/*",
+    "https://*.fbsbx.com/*",
+    "https://*.fbcdn.net/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "optional_host_permissions": ["*://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://pancake.vn/*", "https://*.pancake.vn/*", "https://pages.fm/*", "https://*.pages.fm/*"],
+      "js": ["lib/network-hook.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://pancake.vn/*", "https://*.pancake.vn/*", "https://pages.fm/*", "https://*.pages.fm/*"],
+      "js": [
+        "lib/dom-utils.js",
+        "lib/network-bridge.js",
+        "providers/audio-provider.js",
+        "providers/pancake-provider.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

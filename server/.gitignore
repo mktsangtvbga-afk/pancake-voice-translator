@@ -1,0 +1,4 @@
+node_modules/
+.env
+cache/store.json
+*.log
