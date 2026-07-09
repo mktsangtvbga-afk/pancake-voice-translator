@@ -10,7 +10,7 @@
  */
 
 const DEFAULT_SETTINGS = {
-  backendUrl: 'http://localhost:5175',
+  backendUrl: 'https://pancake-voice-translator-backend.onrender.com',
 };
 const CACHE_PREFIX = 'pvt_cache_';
 const CACHE_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days

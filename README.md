@@ -84,7 +84,7 @@ rồi restart server. Việc này chặn các trang web khác gọi thẳng vào
 1. Vào `chrome://extensions` (Cốc Cốc: `browser://extensions`).
 2. Bật **Chế độ dành cho nhà phát triển / Developer mode**.
 3. Bấm **Tải tiện ích đã giải nén / Load unpacked**, chọn thư mục `extension/`.
-4. Bấm icon extension → nhập **Backend URL** (mặc định `http://localhost:5175`) → **Lưu** → **Kiểm tra kết nối**.
+4. Bấm icon extension → kiểm tra **Backend URL** (mặc định trỏ sẵn vào backend đã deploy trên Render — `https://pancake-voice-translator-backend.onrender.com`; đổi sang `http://localhost:5175` nếu bạn đang chạy backend local để dev/test) → **Lưu** → **Kiểm tra kết nối**.
 5. Mở Pancake, vào một hội thoại có voice message, rê chuột vào audio → nút **Dịch** xuất hiện.
 
 ### Icon
