@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: pancake-voice-translator-backend
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: TTS_VOICE
+        value: vi-VN-HoaiMyNeural
+      - key: ALLOWED_ORIGINS
+        value: chrome-extension://nipkhloneodlkfdldnakhlmnhbjfjbbn
+      - key: MAX_AUDIO_BYTES
+        value: "15728640"
