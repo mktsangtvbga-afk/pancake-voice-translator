@@ -51,6 +51,7 @@ Ngôn ngữ:
 - Thai => "th"
 - Chinese => "zh"
 - Lao => "lo"
+- Malay (Malaysia) => "ms"
 
 Yêu cầu đầu ra:
 
