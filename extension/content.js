@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  const { sha256Hex, debounce } = window.PVT.domUtils;
+  const { sha256Hex, normalizeUrlForHash, debounce } = window.PVT.domUtils;
   const registry = window.PVT.registry;
 
   const provider = registry.resolveActive(window.location);
@@ -142,6 +142,14 @@
     }
 
     translateBtn.addEventListener('click', async () => {
+      if (lastTranslation !== null) {
+        // Already translated this message earlier in the current page
+        // session — the panel is still showing it, nothing to do. Avoids a
+        // redundant round trip (extraction + network) even though the
+        // server/client cache would also catch it.
+        panel.hidden = false;
+        return;
+      }
       clearError();
       translateBtn.disabled = true;
       translateBtn.textContent = 'Đang dịch...';
@@ -150,7 +158,7 @@
         if (!audioUrl) {
           throw new Error('Không tìm thấy file audio cho voice message này.');
         }
-        const audioHash = await sha256Hex(audioUrl);
+        const audioHash = await sha256Hex(normalizeUrlForHash(audioUrl));
         const payload = { type: 'TRANSLATE_AUDIO', audioHash, pageUrl: window.location.href };
 
         if (audioUrl.startsWith('blob:') || audioUrl.startsWith('data:')) {

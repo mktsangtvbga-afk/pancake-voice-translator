@@ -83,6 +83,26 @@
     });
   }
 
+  /**
+   * Strip query string/fragment before hashing a media URL for caching.
+   * Chat CDNs (confirmed live: cdn.fbsbx.com) serve voice messages behind
+   * signed URLs whose query tokens (oh=, oe=, dl=...) rotate on every page
+   * load even though the underlying attachment is unchanged — hashing the
+   * raw URL would mint a new cache key every time and defeat caching
+   * entirely (translating the same message repeatedly burns Gemini quota
+   * for no reason). The attachment's stable id lives in the path.
+   */
+  function normalizeUrlForHash(url) {
+    if (!url) return url;
+    if (url.startsWith('blob:') || url.startsWith('data:')) return url; // no query games here
+    try {
+      const u = new URL(url, global.location.href);
+      return `${u.origin}${u.pathname}`;
+    } catch (_err) {
+      return url.split('?')[0].split('#')[0];
+    }
+  }
+
   /** SHA-256 hex digest, used for both cache keys and dedupe. */
   async function sha256Hex(text) {
     const enc = new TextEncoder().encode(text);
@@ -107,6 +127,7 @@
     isAudioContentType,
     findAudioUrlInElement,
     waitForAudioUrl,
+    normalizeUrlForHash,
     sha256Hex,
     debounce,
   };
