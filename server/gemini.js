@@ -5,7 +5,7 @@
  */
 const { GoogleGenAI } = require('@google/genai');
 
-const MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-pro-preview';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 // Confirmed live: plain text calls return in ~1-4s even with audio attached
 // (30KB clip: 3.8s), but occasionally a call just hangs for the full
 // duration with no response at all (77KB clip: hung 90s straight) — this
