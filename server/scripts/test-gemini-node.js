@@ -40,7 +40,7 @@ async function testSdk() {
   try {
     const res = await Promise.race([
       ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3.1-pro-preview',
         contents: [{ role: 'user', parts: [{ text: 'Say hi in one word' }] }],
       }),
       new Promise((_, reject) => setTimeout(() => reject(new Error('timeout 15s (test tu dat, khong phai loi that)')), 15000)),
